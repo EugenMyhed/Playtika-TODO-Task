@@ -1,4 +1,4 @@
-import { handleActions } from "redux-actions";
+import actionsType from './actionsType';
 
 const INITIAL_LIST = [
   { text: 'Call Dwight Schrute', label: 'Work', isDone: false },
@@ -9,6 +9,26 @@ const INITIAL_LIST = [
   { text: 'Do morning exercise', label: 'Personal', isDone: true },
 ];
 
-export default handleActions({
+const initialState = {
+  list: INITIAL_LIST,
+  filterType: ''
+}
 
-}, {})
+export function reducerTask (state: any = initialState, action: any) {
+
+  switch(action.type) {
+    case actionsType.CREATE_TASK: 
+      return {
+        ...state,
+        list: [ ...state.list, {text: action.task.text, label: action.task.label, isDone: action.task.isDone } ]
+      }
+    case actionsType.SET_FILTER_TYPE: 
+      return {
+       ...state,
+       filterType: action.filterType
+      }
+      default:
+      return state
+    }
+}
+

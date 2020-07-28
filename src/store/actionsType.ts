@@ -1,0 +1,4 @@
+export default  {
+    CREATE_TASK: 'CREATE_TASK',
+    SET_FILTER_TYPE: 'SET_FILTER_TYPE'
+};
